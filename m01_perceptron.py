@@ -46,7 +46,7 @@ class Perceptron:
         rgen = np.random.RandomState(self.random_state)
         self.w_ = rgen.normal(loc=0.0, scale=0.01, size=X.shape[1])
         # 평균 0.0, 표준편차 0.01, n_features 사이즈의 랜덤 가중치 설정
-        self.b_ = np.float_(0.)
+        self.b_ = np.float64(0.)
         self.errors_ = []
 
         for _ in range(self.n_iter):
@@ -65,4 +65,4 @@ class Perceptron:
     
     def predict(self, X):
         """단위 계단 함수를 사용하여 클래스 레이블을 반환합니다"""
-        return np.where(self.net_input(X) >= 0.0, 0, 1)
+        return np.where(self.net_input(X) >= 0.0, 1, 0)
